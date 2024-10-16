@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ff5c57;
+        }
+
+        .header {
+            position: absolute;
+            top: 5%;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            background-color: black;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .form {
+            display: flex;
+            justify-content: space-between;
+            width: 600px;
+            height: 400px;
+            background-color: #ff5c57;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .calendar {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .calendar input {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .input-fields {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 300px;
+        }
+
+        .input-fields label {
+            font-size: 20px;
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .input-fields input {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .ticket-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TG RTC</h1>
+        </div>
+        <div class="form">
+            <div class="calendar">
+                <label for="date-picker">CALENDER<br>SELECTDATE</label>
+                <input type="date" id="date-picker">
+            </div>
+            <div class="input-fields">
+                <label for="name">NAME:</label>
+                <input type="text" id="name" name="name">
+                
+                <label for="from">FROM:</label>
+                <input type="text" id="from" name="from">
+                
+                <label for="to">TO:</label>
+                <input type="text" id="to" name="to">
+                
+                <p id="ticket-price" class="ticket-price">SHOWHERE TICKET PRICE</p>
+                <button type="submit" onclick="getFakePrice()">BUY</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getFakePrice() {
+            const date = document.getElementById('date-picker').value;
+            const priceElement = document.getElementById('ticket-price');
+
+            // Simulating a price based on the selected date
+            if (date) {
+                const fakePrice = (Math.random() * (1000 - 100) + 100).toFixed(2); // Random price between 100 and 1000
+                priceElement.textContent = `Ticket Price: $${fakePrice}`;
+            } else {
+                priceElement.textContent = 'Please select a date first!';
+            }
+        }
+    </script>
+</body>
+</html>
